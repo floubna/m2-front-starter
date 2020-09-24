@@ -1,0 +1,63 @@
+// import all variables and mixins
+@import "../imports";
+
+.hp-block {
+    @include rem(margin, 0 -#{$gutter} 60px);
+
+    &__content {
+        @include rem(padding, 50px #{$gutter} 0);
+        background-color: $c-white;
+        position: relative;
+
+        &:after {
+            content: "";
+            @include rem(width, 220px);
+            @include rem(height, 35px);
+            background: $bg-body;
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+    @include respond-to('medium')  {
+        @include rem(margin, 60px 0);
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            @include rem(min-height, 370px);
+            position: relative;
+        }
+
+        &__content {
+            width: 50%;
+            box-shadow: 0 3px 30px 0 rgba(110,110,110,0.15);
+            position: initial;
+            @include rem(padding, 70px 40px);
+            @include rem(margin, 0 0 35px);
+            flex: auto;
+
+            &:after {
+                width: 60%;
+                z-index: -1;
+            }
+        }
+    }
+}
+
+
+
+.hp-banner {
+    background-color: $c-secondary;
+
+    overflow: hidden;
+    position: relative;
+
+    &__content {
+        @include rem(min-height, 400px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

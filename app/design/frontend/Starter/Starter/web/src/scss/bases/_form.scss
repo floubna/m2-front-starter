@@ -1,0 +1,35 @@
+// =========================================================
+// Style formulaire
+// =========================================================
+input {
+    &[type="text"],
+    &[type="number"]{
+        border: 1px solid $b-color;
+        @include rem(height, 42px);
+        @include rem(padding, 0 20px);
+        color: $c-textfield;
+
+        &::placeholder {
+            color: $c-textfield;
+            @include rem(font-size, 12px);
+        }
+    }
+}
+
+
+.action-icon {
+    @include rem(height, 42px);
+    @include rem(width, 42px);
+    border: 2px solid $b-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include rem(font-size, 18px);
+    color: $c-textfield;
+
+    @include respond-to('medium')  {
+        &.md-dark {
+            border: 2px solid rgba($c-secondary, .66);
+        }
+    }
+}

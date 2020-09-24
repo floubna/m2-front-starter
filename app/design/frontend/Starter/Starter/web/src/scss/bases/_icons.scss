@@ -1,0 +1,40 @@
+//DO NOTE EDIT THIS FILE (GENERATED)
+@font-face {
+    font-family: "starter_icons";
+    src: url('../fonts/icons/starter_icons.eot');
+    src: url('../fonts/icons/starter_icons.eot?#iefix') format('eot'),
+    url('../fonts/icons/starter_icons.woff2') format('woff2'),
+    url('../fonts/icons/starter_icons.woff') format('woff'),
+    url('../fonts/icons/starter_icons.ttf') format('truetype'),
+    url('../fonts/icons/starter_icons.svg#starter_icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.icon {
+    line-height: .9;
+    display: inline-block;
+
+    &:before {
+        display: inline-block;
+        font-family: "starter_icons";
+        font-style: normal;
+        font-weight: normal;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+}
+
+.icon-angle-down:before { content: $icon-angle-down }
+.icon-angle-left:before { content: $icon-angle-left }
+.icon-angle-right:before { content: $icon-angle-right }
+.icon-angle-up:before { content: $icon-angle-up }
+.icon-close:before { content: $icon-close }
+.icon-delete:before { content: $icon-delete }
+.icon-edit:before { content: $icon-edit }
+.icon-linkedin:before { content: $icon-linkedin }
+.icon-search:before { content: $icon-search }
+.icon-shop:before { content: $icon-shop }
+.icon-twitter:before { content: $icon-twitter }
+.icon-youtube:before { content: $icon-youtube }

@@ -1,0 +1,57 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Override Header structure -->
+        <referenceContainer name="header.container" htmlClass="page-header header">
+            <container name="header.top" htmlClass="header-top hidden md-block text-white bg-grey py-10" htmlTag="div" />
+            <container name="header.content" htmlClass="header-content relative py-15 md-pt-30 md-pb-50" htmlTag="div">
+                <container name="header.content.wrapper" htmlClass="container" htmlTag="div" />
+            </container>
+        </referenceContainer>
+
+        <referenceContainer name="header.panel.wrapper" htmlClass="container" />
+        <referenceContainer name="header.panel" htmlClass="header-top-content text-12 flex justify-end items-center" />
+        <referenceContainer name="header-wrapper" htmlClass="flex md-justify-between items-center" />
+
+
+        <move element="header.panel.wrapper" destination="header.top" />
+        <move element="header-wrapper" destination="header.content.wrapper" />
+        <move element="store_switcher" destination="header.panel" after="-"/>
+        <move element="minicart" destination="header-wrapper" after="-" />
+
+        <referenceBlock name="catalog.compare.link" remove="true" />
+
+
+
+        <!-- Footer -->
+        <referenceContainer name="footer-container" htmlClass="page-footer footer bg-grey text-white">
+            <referenceContainer name="footer" htmlClass="footer-top container py-50" htmlTag="div">
+                <container name="footer.container.wrapper" htmlClass="flex flex-col justify-between md-flex-wrap md-flex-row md-items-center" htmlTag="div">
+                    <block class="Magento\Theme\Block\Html\Footer" name="footer.logo" template="Magento_Theme::html/footer/logo.phtml"/>
+                    <block class="Magento\Theme\Block\Html\Footer" name="rsocial" template="Magento_Theme::html/rsocial.phtml"/>
+                </container>
+            </referenceContainer>
+            <container name="footer.bottom" htmlClass="footer-bottom py-15" htmlTag="div" >
+                <container name="footer.bottom.container" htmlClass="container" htmlTag="div" />
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="footer_links">
+            <block class="Magento\Sales\Block\Guest\Link" name="legal-notice-link">
+                <arguments>
+                    <argument name="label" xsi:type="string" translate="true">Legal Notice</argument>
+                    <argument name="path" xsi:type="string">legal-notice</argument>
+                    <argument name="sortOrder" xsi:type="number">0</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <move element="footer_links" destination="footer.container.wrapper" before="rsocial" />
+        <move element="copyright" destination="footer.bottom.container" before="-" />
+
+        <referenceBlock name="form.subscribe" remove="true" />
+        <referenceBlock name="privacy-policy-link" remove="true" />
+        <referenceBlock name="search-term-popular-link" remove="true" />
+        <referenceBlock name="catalog-search-advanced-link" remove="true" />
+        <referenceBlock name="sales-guest-form-link" remove="true" />
+    </body>
+</page>

@@ -1,0 +1,66 @@
+@import "header/minicart";
+@import "header/search";
+@import "header/menu";
+
+.page-header {
+    background-color: $bg-header;
+}
+
+.header {
+    &-top {
+        display: none;
+        color: white;
+        background-color: $grey;
+        @include rem(padding, 10px 0);
+
+        .switcher-language {
+            order: 999;
+        }
+
+        &-content {
+            @include rem(margin, 0 -10px);
+
+            > .switcher,
+            > .header.links {
+                @include rem(margin, 0 10px);
+            }
+        }
+    }
+
+    &-content {
+        position: relative;
+        @include rem(padding, 15px 0);
+    }
+
+    .greet.welcome {
+        @include rem(margin, 0 10px 0 0);
+
+        + .authorization-link {
+            @include rem(margin, 0 10px 0 0);
+        }
+    }
+
+    &.links {
+        display: flex;
+    }
+
+    .logo {
+        @include rem(max-width, 150px);
+
+        
+    }
+
+    @include respond-to('small') {
+        &-top {
+            display: block;
+        }
+
+        &-content {
+            @include rem(padding, 30px 0 50px);
+        }
+
+        .logo {
+            @include rem(max-width, 229px);
+        }
+    }
+}

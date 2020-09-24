@@ -1,0 +1,39 @@
+// COLORS
+$c-primary: #EE0000;
+$c-secondary: #FF9922;
+
+$c-yellow: $c-primary;
+
+$c-white: #FFF;
+$c-black: #000;
+
+$c-text: #575757;
+
+$b-color: rgba($c-secondary, .3);
+$c-border-light: #DDDDDD;
+$bg-header: $c-white;
+$bg-body: #F2F2F2;
+$bg-header: $c-white;
+
+
+$grey-dark:     #575757;
+$grey:          #7A7F7F;
+$grey-medium:   #9B9B9B;
+$grey-light:    #ABABAB;
+
+// FONTS
+$ff-text:   'Roboto', sans-serif;
+$ff-titles: 'IBM Plex Sans Condensed', sans-serif;
+
+$path-to-normal-font: '../fonts/Roboto/';
+$path-to-titles-font: '../fonts/IBM_Plex_Sans_Condensed/';
+
+
+// GRID
+$container-columns: 12;
+$container-max-width: 1240px;
+$gutter: 20px;
+
+
+// field
+$c-textfield: $c-text;

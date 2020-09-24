@@ -1,0 +1,78 @@
+.switcher {
+    @include rem(margin, 20px);
+
+    @include respond-to('medium')  {
+        margin: 0;
+    }
+
+    &-trigger {
+        @include rem(padding, 10px 20px 10px 10px);
+        border: 1px solid $c-border-light;
+        position: relative;
+
+        @include respond-to('medium')  {
+            @include rem(padding, 0 25px 0 0);
+            border: 0;
+
+            strong {
+                font-weight: normal;
+                border-bottom: 2px solid $c-white;
+            }
+
+            &:after {
+                right: 0;
+            }
+
+        }
+
+        &:after {
+            @include icon($icon-angle-down, 5px);
+            transition: transform .2s ease-in;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            transform-origin: 50%;
+        }
+
+        &.active {
+            &:after {
+                transform: translateY(-50%) rotate(180deg);
+            }
+        }
+    }
+
+    &-dropdown {
+        max-height: 0;
+        overflow: auto;
+        background-color: $c-white;
+        color: $c-text;
+        transition: all .3s ease-in;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        box-shadow: 0px 1px 10px rgba(0,0,0,.5);
+        z-index: 1;
+
+        @include respond-to('medium')  {
+            width: calc(100% + 20px);
+            @include rem(margin, 0 -10px);
+        }
+    }
+
+    &-option {
+        @include rem(padding, 5px 10px);
+    }
+
+    &-options {
+        position: relative;
+
+        &.active {
+            .switcher {
+                &-dropdown {
+                    max-height: 200px;
+                }
+            }
+        }
+    }
+}

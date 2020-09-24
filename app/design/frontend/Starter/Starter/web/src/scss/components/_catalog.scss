@@ -1,0 +1,30 @@
+.product.options {
+    &:not(.list) {
+        @include rem(margin, 10px 0 0);
+    }
+
+    .toggle {
+        @include rem(font-size, 12px);
+        color: $c-black;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        &:after {
+            @include icon($icon-angle-down);
+            @include rem(font-size, 5px);
+            @include rem(margin, 0 0 0 10px);
+        }
+    }
+
+    &.list {
+        display: flex;
+
+        .label {
+            &:after {
+                content: ":";
+                @include rem(margin, 0 5px 0 0);
+            }
+        }
+    }
+}

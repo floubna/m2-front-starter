@@ -1,0 +1,238 @@
+body {
+    &._has {
+        &-modal {
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+
+            &-custom {
+                .modal-custom-overlay {
+                    height: 100vh;
+                    left: 0;
+                    position: fixed;
+                    top: 0;
+                    width: 100vw;
+                    z-index: 899;
+                }
+            }
+        }
+    }
+}
+
+
+
+.modals {
+    &-overlay {
+        z-index: 899 !important;
+    }
+}
+
+
+.modal {
+    &-header {
+        .action {
+            &-close {
+                position: absolute;
+                @include rem(right, 15px);
+                @include rem(top, 20px);
+            }
+        }
+    }
+
+    &-footer {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+
+        .action {
+            @include rem(margin-top, 5px);
+            @include rem(margin-bottom, 5px);
+        }
+
+        @include respond-to('small') {
+            flex-direction: row;
+
+            .action {
+                margin: 0;
+            }
+        }
+    }
+
+    &-slide,
+    &-popup {
+        bottom: 0;
+        left: 0;
+        min-width: 0;
+        position: fixed;
+        right: 0;
+        top: 0;
+        visibility: hidden;
+        background-color: rgba(0, 0, 0, .5);
+
+        &._show {
+            visibility: visible;
+
+            &.modal-inner-wrap {
+                transform: translate(0, 0);
+
+            }
+        }
+    }
+
+    &-inner-wrap {
+        background-color: $c-white;
+        box-shadow: 0 0 12px 2px rgba(0, 0, 0, 0.35);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    &-bg-grey {
+        .modal-inner-wrap {
+            background-color: $grey;
+        }
+    }
+
+    // modal slide
+    &-slide {
+        left: 14.8rem;
+        z-index: 900 !important;
+
+        &._show {
+            .modal-inner-wrap {
+                transform: translateX(0);
+            }
+        }
+
+        .modal-inner-wrap {
+            height: 100%;
+            overflow-y: auto;
+            position: static;
+            transform: translateX(100%);
+            transition-duration: .3s;
+            transition-property: transform, visibility;
+            transition-timing-function: ease-in-out;
+            width: auto;
+        }
+
+        &._inner-scroll {
+            .modal-inner-wrap {
+                overflow-y: visible;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .modal-header,
+            .modal-footer {
+                flex-grow: 0;
+                flex-shrink: 0;
+            }
+
+            .modal-content {
+                overflow-y: auto;
+            }
+
+            .modal-footer {
+                margin-top: auto;
+            }
+        }
+
+        .modal-header,
+        .modal-content,
+        .modal-footer {
+            padding: 0 2.6rem 2.6rem;
+        }
+
+        .modal {
+            &-header {
+                @include rem(padding-top, 30px);
+                @include rem(padding-bottom, 20px);
+            }
+
+            &-content {
+                @include rem(padding-bottom, 70px);
+            }
+        }
+    }
+
+    &-popup {
+        z-index: 900 !important;
+        left: 0;
+        overflow-y: auto;
+
+        &._show {
+            .modal-inner-wrap {
+                transform: translateY(0);
+            }
+        }
+
+        .modal-inner-wrap {
+            margin: 5rem auto;
+            width: 88%;
+            @include rem(max-width, 1280px);
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+            height: auto;
+            left: 0;
+            position: absolute;
+            right: 0;
+            transform: translateY(-200%);
+            transition-duration: .2s;
+            transition-property: transform, visibility;
+            transition-timing-function: ease;
+        }
+
+        &._inner-scroll {
+            overflow-y: auto;
+
+            &.modal-inner-wrap {
+                max-height: 90%;
+            }
+
+            .modal-content {
+                overflow-y: auto;
+            }
+        }
+
+        .modal-header,
+        .modal-content,
+        .modal-footer {
+            @include rem(margin-right, 30px);
+            @include rem(margin-left, 30px);
+        }
+
+        .modal-header,
+        .modal-footer {
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        .modal-header {
+            @include rem(padding-top, 30px);
+            @include rem(padding-bottom, 20px);
+        }
+
+        .modal-footer {
+            margin-top: auto;
+            padding-bottom: 3rem;
+            padding-top: 3rem;
+        }
+
+        .modal-footer-actions {
+            text-align: right;
+        }
+    }
+}
+
+
+
+.ie10,
+.ie9 {
+    .modal-popup._inner-scroll {
+        overflow-y: auto;
+
+        .modal-inner-wrap {
+            max-height: none;
+        }
+    }
+}

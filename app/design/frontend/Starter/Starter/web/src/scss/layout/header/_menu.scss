@@ -1,0 +1,190 @@
+.nav {
+    // mobile
+    &-toggle {
+        @include rem(width, 21px);
+        @include rem(height, 17px);
+
+        &-bar {
+            @include rem(height, 2px);
+        }
+    }
+
+    &-sections {
+        position: fixed;
+        z-index: 1;
+        background: $c-white;
+        height: 100%;
+        top: 0;
+        left: -100%;
+        width: calc(100% - 60px);
+        transition: left .3s ease-in;
+    }
+
+    &-before-open {
+        body {
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .page-wrapper {
+            transition: left .3s ease-in;
+            height: 100%;
+            left: 0;
+            overflow: hidden;
+            position: relative;
+        }
+    }
+
+    &-open {
+        .page-wrapper {
+            left: 80%;
+            left: calc(100% - 60px);
+        }
+
+        .nav-toggle:after {
+            content: '';
+            background: rgba($c-black, .2);
+            display: block;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .nav-sections {
+            left: 0;
+        }
+    }
+
+    &-sections {
+        &-item {
+            &-switch {
+                background-color: rgba($c-secondary, .1);
+            }
+
+            &-title {
+                &.active {
+                    > .nav-sections-item-switch {
+                        background-color: $c-secondary;
+                        color: $c-white;
+                    }
+                }
+            }
+
+            &-content {
+            }
+        }
+    }
+
+    // menu desktop
+    @include respond-to('medium')  {
+        &-sections {
+            box-shadow: inset 0 1px 0 #E6E8EA;
+            background-color: $bg-header;
+            position: relative;
+            left: auto;
+            width: 100%;
+            height: auto;
+
+            &-item-content > *:not(nav) {
+                display: none;
+            }
+        }
+    }
+}
+
+
+
+.navigation {
+    a {
+        font-family: $ff-titles;
+        color: $c-black;
+        text-transform: uppercase;
+        @include rem(padding, 11px 20px);
+        //border-bottom: 1px solid $b-color;
+        box-shadow: inset 0 1px 0 $c-border-light, inset 0 -1px 0 $c-border-light;
+        margin: -1px 0 0;
+        letter-spacing: 1.2px;
+        @include rem(font-size, 12px);
+        display: block;
+    }
+
+    .category-item {
+        position: relative;
+
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            background-color: $c-primary;
+            transition: all .3s ease-in;
+        }
+
+        &.active {
+            &:before {
+                @include rem(width, 5px);
+            }
+        }
+    }
+
+    @include respond-to('medium')  {
+        > ul {
+            display: flex;
+            justify-content: center;
+            @include rem(min-height, 60px);
+        }
+
+        li.level0 {
+            @include rem(padding, 0 40px);
+            line-height: 1;
+            display: flex;
+            align-items: center;
+
+            &:not(.last) {
+                &:after {
+                    content: '';
+                    @include rem(height, 13px);
+                    @include rem(width, 1px);
+                    position: absolute;
+                    right: 0;
+                    background-color: $c-border-light;
+                    @include align(false, true);
+                }
+            }
+
+            &:before {
+                bottom: 0;
+                top: auto;
+                width: 100%;
+                height: 0;
+            }
+
+            &.active {
+                &:before {
+                    @include rem(height, 5px);
+                    width: 100%;
+                }
+            }
+
+            &:not(.active):hover {
+                &:before {
+                    @include rem(height, 2px);
+                }
+            }
+        }
+
+        a {
+            box-shadow: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+    }
+}
